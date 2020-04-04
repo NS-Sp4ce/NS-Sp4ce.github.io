@@ -5072,9 +5072,6 @@ img {
 .read-mode #article-container h6:before {
   content: '';
 }
-html {
-  filter: grayscale(100%);
-}
 .search-dialog {
   position: fixed;
   top: 5rem;

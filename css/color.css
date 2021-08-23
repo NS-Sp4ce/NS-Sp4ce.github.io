@@ -1,6 +1,6 @@
 /* 日间模式页面调整 */
 [data-theme=light] {
-    --card-bg: linear-gradient(
+    --body-bg: linear-gradient(
         102.7deg
         , rgb(253, 218, 255) 8.2%, rgb(223, 173, 252) 19.6%, rgb(173, 205, 252) 36.8%, rgb(173, 252, 244) 73.2%, rgb(202, 248, 208) 90.9%);
         }

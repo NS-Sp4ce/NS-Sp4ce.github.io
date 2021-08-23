@@ -7,7 +7,14 @@
 
 ::-webkit-scrollbar-thumb {
     background-color: #e58a8a;
-    background-image: -webkit-linear-gradient( 45deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.4) 75%, transparent 75%, transparent);
+    background-image: -webkit-linear-gradient(45deg,
+            rgba(255, 255, 255, 0.4) 25%,
+            transparent 25%,
+            transparent 50%,
+            rgba(255, 255, 255, 0.4) 50%,
+            rgba(255, 255, 255, 0.4) 75%,
+            transparent 75%,
+            transparent);
     border-radius: 2em;
 }
 
@@ -30,7 +37,6 @@
     margin: 30px 0px 30px 0px;
 }
 
-
 /* 提交按钮 */
 
 #vcomment button {
@@ -46,13 +52,13 @@
     transition: all 0.3s;
 }
 
-
 /* 评论区代码块 */
 
-.v[data-class=v] code {
+.v[data-class="v"] code {
     color: #c7254e;
-    background-color: #F9F2F4;
+    background-color: #f9f2f4;
 }
+
 /* 设置评论框 */
 
 .vcard {
@@ -63,25 +69,34 @@
     margin: 30px 0px 0px 0px;
 }
 
-
 /* 取消回复聊天框 */
 
 .vquote .vcard {
     box-shadow: 2px 2px 5px transparent;
-    background: rgba(255, 255, 255, 0.0);
+    background: rgba(255, 255, 255, 0);
     padding: 0px;
 }
+
 /*半透明*/
+#recent-posts>.recent-post-item,
+.layout_page>div:first-child:not(.recent-posts),
+.layout_post>#page,
+.layout_post>#post,
+.read-mode .layout_post>#post {
+    background: var(--light_bg_color);
+}
+
 #post {
-    background: var(--light_bg_color)
+    background: var(--light_bg_color);
 }
 
 #aside-content .card-widget {
-    background: var(--light_bg_color)
+    background: var(--light_bg_color);
 }
-/*背景*/
+
 #body-wrap {
-    background: var(--body-bg); /* 慎用!important */
+    background: var(--body-bg);
+    /* 慎用!important */
     width: 100%;
     height: 100%;
     background-attachment: local;
@@ -93,102 +108,130 @@
 }
 
 #footer {
-    background: rgba(255,255,255,.15) !important;
+    background: rgba(255, 255, 255, 0.15) !important;
     color: rgb(255, 255, 255);
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
-    backdrop-filter: saturate(100%) blur(5px)
+    backdrop-filter: saturate(100%) blur(5px);
 }
 
 #footer::before {
-    background: rgba(255,255,255,.15)
+    background: rgba(255, 255, 255, 0.15);
 }
 
 #footer #footer-wrap {
-    color: var(--font-color)
+    color: var(--font-color);
 }
 
 #footer #footer-wrap a {
-    color: var(--font-color)
+    color: var(--font-color);
 }
 
 /*风车*/
 /* 文章页H1-H6图标样式效果 */
-h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
-    -webkit-animation: ccc 1.6s linear infinite ;
-    animation: ccc 1.6s linear infinite ;
+h1::before,
+h2::before,
+h3::before,
+h4::before,
+h5::before,
+h6::before {
+    -webkit-animation: ccc 1.6s linear infinite;
+    animation: ccc 1.6s linear infinite;
 }
+
 @-webkit-keyframes ccc {
     0% {
         -webkit-transform: rotate(0deg);
-        transform: rotate(0deg)
+        transform: rotate(0deg);
     }
+
     to {
         -webkit-transform: rotate(-1turn);
-        transform: rotate(-1turn)
+        transform: rotate(-1turn);
     }
 }
+
 @keyframes ccc {
     0% {
         -webkit-transform: rotate(0deg);
-        transform: rotate(0deg)
+        transform: rotate(0deg);
     }
+
     to {
         -webkit-transform: rotate(-1turn);
-        transform: rotate(-1turn)
+        transform: rotate(-1turn);
     }
 }
+
 #content-inner.layout h1::before {
-    color: #ef50a8 ;
+    color: #ef50a8;
     margin-left: -1.55rem;
     font-size: 1.3rem;
     margin-top: -0.23rem;
 }
+
 #content-inner.layout h2::before {
-    color: #fb7061 ;
+    color: #fb7061;
     margin-left: -1.35rem;
     font-size: 1.1rem;
     margin-top: -0.12rem;
 }
+
 #content-inner.layout h3::before {
-    color: #ffbf00 ;
+    color: #ffbf00;
     margin-left: -1.22rem;
     font-size: 0.95rem;
     margin-top: -0.09rem;
 }
+
 #content-inner.layout h4::before {
-    color: #a9e000 ;
+    color: #a9e000;
     margin-left: -1.05rem;
     font-size: 0.8rem;
     margin-top: -0.09rem;
 }
+
 #content-inner.layout h5::before {
-    color: #57c850 ;
+    color: #57c850;
     margin-left: -0.9rem;
     font-size: 0.7rem;
-    margin-top: 0.0rem;
+    margin-top: 0rem;
 }
+
 #content-inner.layout h6::before {
-    color: #5ec1e0 ;
+    color: #5ec1e0;
     margin-left: -0.9rem;
     font-size: 0.66rem;
-    margin-top: 0.0rem;
+    margin-top: 0rem;
 }
-#content-inner.layout h1:hover, #content-inner.layout h2:hover, #content-inner.layout h3:hover, #content-inner.layout h4:hover, #content-inner.layout h5:hover, #content-inner.layout h6:hover {
-    color: #49b1f5 ;
+
+#content-inner.layout h1:hover,
+#content-inner.layout h2:hover,
+#content-inner.layout h3:hover,
+#content-inner.layout h4:hover,
+#content-inner.layout h5:hover,
+#content-inner.layout h6:hover {
+    color: #49b1f5;
 }
-#content-inner.layout h1:hover::before, #content-inner.layout h2:hover::before, #content-inner.layout h3:hover::before, #content-inner.layout h4:hover::before, #content-inner.layout h5:hover::before, #content-inner.layout h6:hover::before {
-    color: #49b1f5 ;
-    -webkit-animation: ccc 3.2s linear infinite ;
-    animation: ccc 3.2s linear infinite ;
+
+#content-inner.layout h1:hover::before,
+#content-inner.layout h2:hover::before,
+#content-inner.layout h3:hover::before,
+#content-inner.layout h4:hover::before,
+#content-inner.layout h5:hover::before,
+#content-inner.layout h6:hover::before {
+    color: #49b1f5;
+    -webkit-animation: ccc 3.2s linear infinite;
+    animation: ccc 3.2s linear infinite;
 }
+
 /* 页面设置icon转动速度调整 */
 #rightside_config i.fas.fa-cog.fa-spin {
-    animation: fa-spin 5s linear infinite ;
+    animation: fa-spin 5s linear infinite;
 }
 
 /*黑夜模式星光*/
-#universe{
+#universe {
     display: block;
     position: fixed;
     margin: 0;

@@ -80,7 +80,7 @@
     background: var(--light_bg_color)
 }
 
-#web_bg {
+#body-wrap {
     background: var(--card-bg); /* 慎用!important */
     width: 100%;
     height: 100%;

@@ -245,3 +245,24 @@ h6::before {
     pointer-events: none;
     z-index: -1;
 }
+
+/* 日间模式页面调整 */
+[data-theme="light"] {
+    --body-bg: linear-gradient(
+    135deg,
+    rgba(247, 149, 51, 0.1),
+    rgba(243, 112, 85, 0.1) 15%,
+    rgba(239, 78, 123, 0.1) 30%,
+    rgba(161, 102, 171, 0.1) 44%,
+    rgba(80, 115, 184, 0.1) 58%,
+    rgba(16, 152, 173, 0.1) 72%,
+    rgba(7, 179, 155, 0.1) 86%,
+    rgba(109, 186, 130, 0.1)
+    );
+}
+
+/* 夜间模式页面调整 */
+[data-theme="dark"] {
+  --card-bg: rgba(0, 0, 0, 0); /* 全局背景调整 */
+  --btn-bg: #012c48 !important; /* 页面所有按钮夜间背景色 */
+}

@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>esxi8安装群晖踩坑记</title>
+      <link href="/p/ebae.html"/>
+      <url>/p/ebae.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>安装部分参考<a href="https://wp.gxnas.com/12245.html%E3%80%81https://wp.gxnas.com/12800.html/comment-page-1">https://wp.gxnas.com/12245.html、https://wp.gxnas.com/12800.html/comment-page-1</a></p><h1 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h1><h2 id="1-esxi8无法添加硬盘问题"><a href="#1-esxi8无法添加硬盘问题" class="headerlink" title="1. esxi8无法添加硬盘问题"></a>1. esxi8无法添加硬盘问题</h2><p>在esxi8.0中添加现有硬盘时会出现无法添加问题</p><h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>在<code>esxi</code>中<code>存储-&gt;数据浏览器-&gt;存储库-&gt;创建文件夹</code>，上传<code>arpl</code>的2个<code>vmdk</code>文件</p><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20230202093607171.png" alt="image-20230202093607171"></p><p>然后<strong>正常创建虚拟机（虚机名称与上一步文件夹名称保持一致）</strong>执行到这一步<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20230202092910744.png" alt="image-20230202092910744"></p><p>删除自带硬盘，然后点<code>添加硬盘-&gt;现有硬盘</code>选择<code>arpl</code>盘，确定</p><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20230202093959787.png" alt="image-20230202093959787"></p><p>此时会报错，新添加硬盘类似如下</p><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20230202093115726.png" alt="image-20230202093115726"></p><p>此时<code>点击下一步-&gt;左侧菜单自定义设置（或上一步）-&gt;下一步-&gt;完成</code></p><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20230202093223564.png" alt="image-20230202093223564"></p><p>此时查看创建好的虚机，硬盘被正常挂载</p><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20230202093303791.png" alt="image-20230202093303791"></p><h2 id="2-启动找不到引导"><a href="#2-启动找不到引导" class="headerlink" title="2.启动找不到引导"></a>2.启动找不到引导</h2><p>经过上一步创建好的虚机此时启动会出现找不到引导</p><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20230202094120288.png" alt="image-20230202094120288"></p><h3 id="解决方法-1"><a href="#解决方法-1" class="headerlink" title="解决方法"></a>解决方法</h3><p>在上一步创建虚机时选择引导选项为<code>BIOS</code>并配置下一次启动强制进入BIOS</p><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20230202094852304.png" alt="image-20230202094852304"></p><p>调整启动项如下</p><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20230202094932666.png" alt="image-20230202094932666"></p><h2 id="3-安装卡56-，报错loader-disk-neither-USB-or-DOM"><a href="#3-安装卡56-，报错loader-disk-neither-USB-or-DOM" class="headerlink" title="3. 安装卡56%，报错loader disk neither USB or DOM"></a>3. 安装卡56%，报错loader disk neither USB or DOM</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20230202095110295.png" alt="image-20230202095110295"></p><p>硬盘控制器位置问题，关机调整硬盘控制器位置为SATA即可，<code>arpl</code>盘调整为<code>SATA0:0</code>，数据盘依次类似调整</p><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20230202095213888.png" alt="image-20230202095213888"></p><p>此时开机即可正常使用，访问<code>ip:7681</code>即可执行安装、引导操作</p><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20230202095303308.png" alt="image-20230202095303308"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 日常 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 日常 </tag>
+            
+            <tag> NAS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>向日葵远程命令执行漏洞分析</title>
       <link href="/p/b58b.html"/>
       <url>/p/b58b.html</url>

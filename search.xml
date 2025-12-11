@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>vsphere8部署开箱即用win环境模板</title>
+      <link href="/p/8ac7.html"/>
+      <url>/p/8ac7.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>因工作需要，记录下vsphere8环境部署开箱即用windows系列环境可用于部署vcenter自定义虚机规范模板</p><h1 id="server版本"><a href="#server版本" class="headerlink" title="server版本"></a>server版本</h1><p>有手就行，ISO挂载正常安装完系统后关机，vcenter里右键转为模板即可</p><h1 id="desktop版本"><a href="#desktop版本" class="headerlink" title="desktop版本"></a>desktop版本</h1><h2 id="win10"><a href="#win10" class="headerlink" title="win10"></a>win10</h2><ol><li>挂载ISO到正常安装，一路下一步到直到OOBE界面，如图</li></ol><p><img src="/./images/image-20251211105714612.png" alt="image-20251211105714612"></p><p>在这个界面按shift+ctrl+f3进入审计（审核）模式</p><ol start="2"><li>审计模式里安装常用软件、补丁、vmtools、配置远程桌面，期间可以无限次重启，<strong>不要</strong>点sysprep弹窗的确定（嫌碍事的可以点取消）</li></ol><p><img src="/./images/image-20251211110111467.png" alt="image-20251211110111467"></p><ol start="3"><li>下载OSOT工具扔审计模式的虚机里</li></ol><p><a href="https://customerconnect.omnissa.com/downloads/info/slug/virtual_desktop_and_apps/os_optimization_tool/2506">https://customerconnect.omnissa.com/downloads/info/slug/virtual_desktop_and_apps/os_optimization_tool/2506</a></p><p><img src="/./images/image-20251211110023679.png" alt="image-20251211110023679"></p><ol start="4"><li>打开OSOT执行分析，优化选项按需配置【这一步操作前建议打个快照 后面部署失败可以节省时间】</li></ol><p><img src="/./images/image-20251211110609311.png" alt="image-20251211110609311"></p><p><img src="/./images/image-20251211110624672.png" alt="image-20251211110624672"></p><ol start="5"><li>执行优化</li></ol><p><img src="/./images/image-20251211110643231.png" alt="image-20251211110643231"></p><ol start="6"><li>执行完成</li></ol><p><img src="/./images/image-20251211110834113.png" alt="image-20251211110834113"></p><ol start="7"><li><p>执行后提示可以拍快照后重启再次进入审计模式【也可以打个快照】</p></li><li><p>再次打开OSOT，通用化，查看应答文件，启用编辑器，在OOBE节点添加</p></li></ol><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">SkipUserOOBE</span>&gt;</span>true<span class="tag">&lt;/<span class="name">SkipUserOOBE</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">SkipMachineOOBE</span>&gt;</span>true<span class="tag">&lt;/<span class="name">SkipMachineOOBE</span>&gt;</span></span><br></pre></td></tr></table></figure><p><img src="/./images/image-20251211123343728.png" alt="image-20251211123343728"></p><p>然后保存，执行通用化</p><p><img src="/./images/image-20251211111421828.png" alt="image-20251211111421828"></p><ol start="9"><li>在这一步直接关机</li></ol><p><img src="/./images/image-20251211112353991.png" alt="image-20251211112353991"></p><ol start="10"><li>vcenter里转模板，套用虚拟机自定义规范，测试确认是否成功</li></ol><p><img src="/./images/image-20251211123415955.png" alt="image-20251211123415955"></p><h2 id="WIN11免TPM安装"><a href="#WIN11免TPM安装" class="headerlink" title="WIN11免TPM安装"></a>WIN11免TPM安装</h2><p>正常安装好win10进入操作系统**【非审计模式】<strong>，然后挂载WIN11的ISO，进入</strong>ISO内sources文件夹**，在这里开CMD，<code>setupprep.exe /product server</code>回车，<strong>不</strong>保留用户资料全新安装WIN11，然后安装好后进OOBE参考操作如WIN10</p><h2 id="自定义规范"><a href="#自定义规范" class="headerlink" title="自定义规范"></a>自定义规范</h2><p>自用的自定义规范</p><p><img src="/./images/image-20251211124419264.png" alt="image-20251211124419264"></p><p><img src="/./images/image-20251211123848949.png" alt="image-20251211123848949"></p><p><img src="/./images/image-20251211124433382.png" alt="image-20251211124433382"></p><p><img src="/./images/image-20251211124444523.png" alt="image-20251211124444523"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 运维 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 日常 </tag>
+            
+            <tag> 运维 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ALLATORI反混淆尝试</title>
       <link href="/p/2391.html"/>
       <url>/p/2391.html</url>
